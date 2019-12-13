@@ -1,0 +1,18 @@
+service: serverless-s3
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+
+functions:
+  AppFunction:
+    handler: app.lambdaHandler
+    events:
+      - http: 
+          path: /
+          method: ANY
+          cors: true
+      - http: 
+          path: /{proxy+}
+          method: ANY
+          cors: true
