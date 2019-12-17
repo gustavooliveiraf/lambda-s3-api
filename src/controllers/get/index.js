@@ -11,7 +11,7 @@ const get = (storage) => async (req, res) => {
     return res.status(200).json(body);
   } catch (err) {
     // log(err)
-    return res.status(500).send({ error: err.message });
+    return res.status(500).send(err);
   }
 };
 

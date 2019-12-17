@@ -1,17 +1,27 @@
 service: serverless-s3
 
+custom:
+  bucket: gustavo.oliveira # <bucket-name>
+
 provider:
   name: aws
   runtime: nodejs10.x
+  stage: dev
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:PutObject
+        - s3:PutObjectAcl
+        - s3:GetObject
+        - s3:GetObjectAcl
+      Resource: "arn:aws:s3:::${self:custom.bucket}/*"
+  environment:
+    BUCKET: ${self:custom.bucket}
 
 functions:
   AppFunction:
     handler: app.lambdaHandler
     events:
-      - http: 
-          path: /
-          method: ANY
-          cors: true
       - http: 
           path: /{proxy+}
           method: ANY

@@ -5,7 +5,7 @@ const upload = (storage) => async (req, res) => {
     return res.status(200).send({ message: 'Success' });
   } catch (err) {
     // log(err)
-    return res.status(500).send({ error: err.message });
+    return res.status(500).send(err);
   }
 };
 
