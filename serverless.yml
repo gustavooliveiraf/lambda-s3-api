@@ -1,7 +1,7 @@
 service: serverless-s3
 
 custom:
-  bucket: gustavo.oliveira # <bucket-name>
+  bucket: <bucket-name>
 
 provider:
   name: aws
